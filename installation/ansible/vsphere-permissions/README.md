@@ -48,12 +48,3 @@ ansible-playbook playbook.yml -e action=view -e=@k10-vars.yml
 ```
 
 >The `view` option can be extremely useful when troubleshooting permissions, reproducing the privileges or simply for retrieving/extracting the IDs of the privileges of a role.
-
-___
-
-Reference:
-
-- [Ansible Collection: community.vmware](https://github.com/ansible-collections/community.vmware)
-- [TKG - Required Permissions vSphere](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/1.5/vmware-tanzu-kubernetes-grid-15/GUID-mgmt-clusters-vsphere.html#vsphere-permissions)
-- [NSX ALB - Roles and Permissions for vSphere](https://avinetworks.com/docs/21.1/roles-and-permissions-for-vcenter-nsx-t-users/)
-- <https://avinetworks.com/docs/latest/vmware-user-role>

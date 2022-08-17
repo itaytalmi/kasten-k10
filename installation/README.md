@@ -101,7 +101,7 @@ helm repo update
 
 helm upgrade -i demo-k10-wordpress -n demo-k10-wordpress --create-namespace bitnami/wordpress \
 --set wordpressUsername="demo-k10" \
---set wordpressPassword="VMware1!" \
+--set wordpressPassword="Kasten1!" \
 --set wordpressBlogName="K10 Demo Blog!"
 ```
 
