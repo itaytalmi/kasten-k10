@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: k10-infra-vsphere-creds
+  namespace: kasten-io
+type: Opaque
+stringData:
+  vsphere_user: k10-admin@terasky.demo # Your Kasten sevice account for vSphere
+  vsphere_password: your-password # Your service account password
+---
+kind: Profile
+apiVersion: config.kio.kasten.io/v1alpha1
+metadata:
+  name: vsphere
+  namespace: kasten-io
+spec:
+  infra:
+    credential:
+      secretType: VSphereKey
+      secret:
+        apiVersion: v1
+        kind: secret
+        name: k10-infra-vsphere-creds
+        namespace: kasten-io
+    vsphere:
+      serverAddress: demo-vc-01.terasky.demo # Your vCenter server hostname
+      taggingEnabled: true
+    type: VSphere
+  type: Infra

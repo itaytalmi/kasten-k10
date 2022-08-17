@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: k10-ca-cert
+  namespace: kasten-io
+data:
+  custom-ca-bundle.pem: | # Set your LDAPS/CA certificate(s) below
+    -----BEGIN CERTIFICATE-----
+    MIIDojCCAoqgAwIBAgIQSQ5hCqC2GqhFn+ZNGqdPkTANBgkqhkiG9w0BAQsFADBP
+    MRQwEgYKCZImiZPyLGQBGRYEZGV..........
+    -----END CERTIFICATE-----

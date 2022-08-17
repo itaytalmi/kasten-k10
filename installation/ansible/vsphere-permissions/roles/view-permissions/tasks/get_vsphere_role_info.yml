@@ -1,0 +1,17 @@
+---
+- name: Get vSphere Role Information - {{ role.name }}
+  community.vmware.vmware_local_role_info:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: false
+  register: vsphere_role_info
+  delegate_to: localhost
+
+- name: Get Role Privileges - {{ role.name }}
+  ansible.builtin.set_fact:
+    role_privileges: "{{ vsphere_role_info.local_role_info | selectattr('role_name', 'equalto', role.name ) | map(attribute='privileges') | first }}"
+
+- name: Print Role Privileges - {{ role.name }}
+  ansible.builtin.debug:
+    msg: "{{ role_privileges }}"

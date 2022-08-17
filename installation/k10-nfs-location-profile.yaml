@@ -1,0 +1,11 @@
+kind: Profile
+apiVersion: config.kio.kasten.io/v1alpha1
+metadata:
+  name: nfs
+  namespace: kasten-io
+spec:
+  locationSpec:
+    type: FileStore
+    fileStore:
+      claimName: pvc-k10-nfs
+  type: Location

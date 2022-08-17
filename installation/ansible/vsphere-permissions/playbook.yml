@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  roles:
+    - role: configure-permissions
+      when: action | lower == "configure"
+    - role: view-permissions
+      when: action | lower == "view"

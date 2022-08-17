@@ -1,0 +1,26 @@
+---
+- name: Create vSphere Role {{ role.name }}
+  community.vmware.vmware_local_role_manager:
+    hostname: "{{ vcenter_hostname }}"
+    username: "{{ vcenter_username }}"
+    password: "{{ vcenter_password }}"
+    validate_certs: false
+    local_role_name: "{{ role.name }}"
+    local_privilege_ids: "{{ role.privileges }}"
+    action: set
+    state: present
+  delegate_to: localhost
+
+- name: Assign User {{ role.user }} to Object {{ role.object_name }}
+  community.vmware.vmware_object_role_permission:
+    hostname: "{{ vcenter_hostname }}"
+    username: "{{ vcenter_username }}"
+    password: "{{ vcenter_password }}"
+    validate_certs: false
+    role: "{{ role.name }}"
+    principal: "{{ role.user }}"
+    object_type: "{{ role.object_type }}"
+    object_name: "{{ role.object_name }}"
+    recursive: true
+    state: present
+  delegate_to: localhost

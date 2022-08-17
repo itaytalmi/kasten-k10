@@ -1,0 +1,5 @@
+---
+- include_tasks: get_vsphere_role_info.yml
+  loop: "{{ vsphere_roles }}"
+  loop_control:
+    loop_var: role

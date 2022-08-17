@@ -1,0 +1,30 @@
+# The 'action' parameter can be set to 'configure' or 'view'
+action: configure
+
+# vSphere Credentials
+# You can also use the VMWARE_HOST, VMWARE_USER and VMWARE_PASSWORD environment variables
+vcenter_hostname: your-vcenter-fqdn
+vcenter_username: your-vsphere-username
+vcenter_password: your-vsphere-password
+
+# vSphere Roles Configuration
+vsphere_roles:
+  - name: k10-admin
+    object_type: Folder
+    object_name: rootFolder
+    user: terasky.demo\k10-admin # Your domain name and Kasten service account
+    privileges:
+      # CNS privileges
+      - Cns.Searchable
+      # Datastore privileges
+      - Datastore.AllocateSpace
+      - Datastore.Browse
+      - Datastore.FileManagement
+      # Global privileges
+      - Global.DisableMethods
+      - Global.EnableMethods
+      - Global.Licenses
+      # Tagging privileges
+      - InventoryService.Tagging.CreateCategory
+      - InventoryService.Tagging.CreateTag
+      - InventoryService.Tagging.DeleteTag

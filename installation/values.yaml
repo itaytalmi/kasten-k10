@@ -1,0 +1,54 @@
+clusterName: it-tkg-shared-svc-cls # Your Kubernetes cluster name
+
+ingress:
+  create: true
+  tls:
+    enabled: true
+    secretName: k10-ingress-tls
+  host: it-k10.terasky.demo # Your Kasten FQDN
+
+auth:
+  ldap:
+    enabled: true
+    dashboardURL: https://it-k10.terasky.demo/k10/ # Set your Kasten FQDN
+    host: terasky.demo:636 # Your LDAP/LDAPS host and port
+    insecureNoSSL: false
+    insecureSkipVerifySSL: false
+    startTLS: false
+    bindDN: CN=ldaps-ro,OU=ServiceAccount,OU=Terasky,DC=terasky,DC=demo # Your LDAP bind user
+    bindPW: you # Your bind password
+    userSearch:
+      baseDN: DC=terasky,DC=demo # Your LDAP base DN for users
+      filter: (objectClass=person)
+      username: sAMAccountName
+      idAttr: DN
+      emailAttr: sAMAccountName
+      nameAttr: sAMAccountName
+      preferredUsernameAttr: sAMAccountName
+    groupSearch:
+      baseDN: DC=terasky,DC=demo # Your LDAP base DN for groups
+      filter: (objectClass=group)
+      userMatchers:
+      - userAttr: DN
+        groupAttr: member
+      nameAttr: cn
+  k10AdminGroups:
+  - k10-admins # Your LDAP admin group for Kasten
+  k10AdminUsers: []
+
+cacertconfigmap:
+  name: k10-ca-cert
+
+global:
+  persistence:
+    enabled: true
+    size: 150Gi
+
+eula:
+  accept: true
+  company: your-org-name
+  email: placeholder@your-org-name.com
+
+license: ""
+
+logLevel: info
