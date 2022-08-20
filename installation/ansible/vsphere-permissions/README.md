@@ -9,7 +9,7 @@ Using the `k10-vars.yml` variables file will create a vSphere role and bind it t
 
 **Prerequisites:**
 
-Service account for Kasten (e.g. `tkg-k10@terasky.demo`). It can also be a `vsphere.local` user if desired.
+Service account for Kasten (e.g. `k10-admin@terasky.demo`). It can also be a `vsphere.local` user if desired.
 
 ## Ansible Playbook Usage
 
